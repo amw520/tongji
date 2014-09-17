@@ -1,42 +1,36 @@
 <?php require('includes/conn.php');?>
 <?php
-/**************************************************************
+deliverASK();
+  /**************************************************************
  *
- * 返回查询结果
- * @param 
+ * 请求分发
+ * @param string $get 请求类型
  * @return string  
  * @access public
  *
  *************************************************************/
-  $curstername=$_GET["curstername"];
-  $chargetype=$_GET["chargetype"];
-  $orderusr=$_GET["orderusr"];
-  $ordertime=$_GET["ordertime"];
-  $orderdate=$_GET["orderdate"];
-  $gamename=$_GET["gamename"];
-  $act=$_GET["act"];
-	$sql="INSERT INTO 'rechargeinfo' ('id' ,'ipadcoed' ,'usrid' ,'gameid' ,'custername' ,'chargetime' ,'chargeday' ,'chargecontent') VALUES (NULL , '01', ".$orderusr.", ".$gamename.", ".$curstername.",  '".$ordertime."', '".$orderdate."', ".$chargetype.")";
-$sqlq="SELECT count(*),sum(chargecontent) FROM 'rechargeinfo' WHERE 1";
-if($act="query"){
-	if($curstername!="undefined"){
-	$sqlq=$sqlq." and custername=".$curstername;
-	}
-	if($chargetype!="undefined"){
-	$sqlq=$sqlq." and chargecontent=".$chargetype;
-	}
-	if($orderusr!="undefined"){
-	$sqlq=$sqlq." and usrid=".$orderusr;
-	}
+ function deliverASK(){
+	$curstername=$_GET["curstername"];
+	$chargetype=$_GET["chargetype"];
+	$orderusr=$_GET["orderusr"];
+	$ordertime=$_GET["ordertime"];
+	$orderdate=$_GET["orderdate"];
+	$gamename=$_GET["gamename"];
+	$ipadcode=$_GET["ipadcode"];
+	$action=$_GET["action"];
+  
+	switch ($action)	{
+		case 'querytotal':
+		  echo queryTotalMount($curstername,$chargetype,$orderusr,$gamename,$date0,$date1,$time0,$time1);
+		  break;  
+		case 'addrec':
+		  echo addChargeItem($ipadcode,$orderusr,$gamename,$curstername,$ordertime,$orderdate,$chargetype);
+		  break;
+		default:
+			echo "action para required";
+		}
+ }
 
-	if($gamename!="undefined"){
-	$sqlq=$sqlq." and gameid=".$gamename;
-	}
-	$sql=$sqlq;
-}
-$result=mysql_query($sql);
-$resstr=mysql_fetch_array($result);
-
-echo json_encode($resstr);
 /**************************************************************
  *
  * 添加充值项
@@ -46,9 +40,9 @@ echo json_encode($resstr);
  *
  *************************************************************/
  function addChargeItem($ipadcode,$orderusr,$gamename,$curstername,$ordertime,$orderdate,$chargetype){
-	$sql="INSERT INTO 'rechargeinfo' ('id' ,'ipadcoed' ,'usrid' ,'gameid' ,'custername' ,'chargetime' ,'chargeday' ,'chargecontent') VALUES (NULL , ".$ipadcode", ".$orderusr.", ".$gamename.", ".$curstername.",  '".$ordertime."', '".$orderdate."', ".$chargetype.")";
+	$sql="INSERT INTO 'rechargeinfo' ('id' ,'ipadcoed' ,'usrid' ,'gameid' ,'custername' ,'chargetime' ,'chargeday' ,'chargecontent') VALUES (NULL , ".$ipadcode.", ".$orderusr.", ".$gamename.", '".$curstername."',  '".$ordertime."', '".$orderdate."', ".$chargetype.")";
 	$result=mysql_query($sql);
-	echo $result;
+	echo $sql;
  }
  /**************************************************************
  *
@@ -75,14 +69,14 @@ echo json_encode($resstr);
 	}
 	if($date0!="undefined"){
 		if($date1!="undefined"){
-			
+			$sqlq=$sqlq." and chargeday BETWEEN".$date0." and ".$date1;
 		}else{
 		$sqlq=$sqlq." and chargeday=".$date0;
 		}
 	}
 	if($time0!="undefined"){
 		if($time1!="undefined"){
-			
+			$sqlq=$sqlq." and chargetime BETWEEN".$time0." and ".$time1;
 		}else{
 		$sqlq=$sqlq." and chargetime=".$time0;
 		}
@@ -129,6 +123,20 @@ echo json_encode($resstr);
  *
  *************************************************************/
   function addGame($gamename){
+	$sql="INSERT INTO gamename(gamename) VALUES('".$gamename."')";
+	$result=mysql_query($sql);
+	
+	echo json_encode($result);
+ }
+     /**************************************************************
+ *
+ * 删除游戏
+ * @param 
+ * @return string  
+ * @access public
+ *
+ *************************************************************/
+  function delGame($gamename){
 	$sql="INSERT INTO gamename(gamename) VALUES('".$gamename."')";
 	$result=mysql_query($sql);
 	
