@@ -148,8 +148,8 @@ var moveDiv = function(fdiv, title) {
         }
     });
 };
-moveDiv(".fixwin", ".prop-move");
-
+//moveDiv(".fixwin", ".prop-move");
+//添加充值记录
 function addData(){
 	var curstername,chargetype,gamename,orderusr,ordertime,orderdate,str;
 	var url="provider.php";
@@ -189,14 +189,15 @@ function addData(){
 	str="curstername=".concat(curstername).concat("&chargetype=").concat(chargetype)
 		.concat("&orderusr=").concat(orderusr).concat("&ordertime=").concat(ordertime)
 		.concat("&orderdate=").concat(orderdate).concat("&gamename=").concat(gamename);
-		url=url+"?"+str;
+		url=url+"?action=addrec&"+str;
 		$.get(url,function(data){
-			alert("添加成功");
+			alert(data);
 		});
 }
+//查询总数
 function queryData (){
 		var curstername,chargetype,gamename,orderusr,ordertime,orderdate,str;
-	var url="provider.php";
+	var url="provider.php?action=querytotal&";
 	if($("#curstername").val()!=""){
 		curstername=$("#curstername").val();
 	}else{
@@ -227,9 +228,41 @@ function queryData (){
 	str="curstername=".concat(curstername).concat("&chargetype=").concat(chargetype)
 		.concat("&orderusr=").concat(orderusr).concat("&ordertime=").concat(ordertime)
 		.concat("&orderdate=").concat(orderdate).concat("&gamename=").concat(gamename);
-		url=url+"?act=query&"+str;
+		url=url+str;
 		$.get(url,function(data){
 			alert(data);
 		});
 
+}
+//添加新用户
+function addUsr(){
+	var url="provider.php?action=addusr&usr=";
+	
+	var usrname=$("#usr").val();
+	url=url+encodeURI(usrname);
+	$.get(url,function(data){
+		alert(data);
+	});
+}
+//添加充值游戏种类
+function addGamename(){
+	var url="tongji/provider.php?action=addgame&gamename=";
+	
+	var gamename=$("#gamename").val();
+	url=url+encodeURI(gamename);
+	$.get(url,function(data){
+		alert(data);
+	});
+}
+//添加币面值
+function addFaceValue(){
+	var url="provider.php?action=addfacevalue";
+	
+	var typename=$("#typename").val();
+	var value=$("#value").val();
+	var nanfei=$("#nanfei").val();
+	url=url+"&typename="+encodeURI(typename)+"&value="+value+"&nanfei="+nanfei;
+	$.get(url,function(data){
+		alert(data);
+	});
 }

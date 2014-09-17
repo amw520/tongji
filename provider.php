@@ -10,22 +10,32 @@ deliverASK();
  *
  *************************************************************/
  function deliverASK(){
-	$curstername=$_GET["curstername"];
-	$chargetype=$_GET["chargetype"];
-	$orderusr=$_GET["orderusr"];
-	$ordertime=$_GET["ordertime"];
-	$orderdate=$_GET["orderdate"];
-	$gamename=$_GET["gamename"];
-	$ipadcode=$_GET["ipadcode"];
-	$action=$_GET["action"];
+	// $curstername=$_GET["curstername"];
+	// $chargetype=$_GET["chargetype"];
+	// $orderusr=$_GET["orderusr"];
+	// $ordertime=$_GET["ordertime"];
+	// $orderdate=$_GET["orderdate"];
+	// $gamename=$_GET["gamename"];
+	// $ipadcode=$_GET["ipadcode"];
+		$action=$_GET["action"];
   
 	switch ($action)	{
 		case 'querytotal':
-		  echo queryTotalMount($curstername,$chargetype,$orderusr,$gamename,$date0,$date1,$time0,$time1);
+		  //echo queryTotalMount($curstername,$chargetype,$orderusr,$gamename,$date0,$date1,$time0,$time1);
+		  //echo queryTotalMount($_GET["curstername"],$_GET["chargetype"],$_GET["orderusr"],$_GET["gamename"],$date0,$date1,$time0,$time1);
 		  break;  
 		case 'addrec':
-		  echo addChargeItem($ipadcode,$orderusr,$gamename,$curstername,$ordertime,$orderdate,$chargetype);
+		  //echo addChargeItem($_GET["ipadcode"],$_GET["orderusr"],$_GET["gamename"],$_GET["curstername"],$_GET["ordertime"],$_GET["orderdate"],$_GET["chargetype"]);
 		  break;
+		 case 'addusr':
+			echo addUsr($_GET["usr"]);
+			break;
+		 case 'addfacevalue':
+			echo addFaceValue($_GET["typename"],$_GET["value"],$_GET["nanfei"]);
+			break;
+		 case 'addgame':
+			echo addGame($_GET["gamename"]);
+			break;
 		default:
 			echo "action para required";
 		}
@@ -40,9 +50,9 @@ deliverASK();
  *
  *************************************************************/
  function addChargeItem($ipadcode,$orderusr,$gamename,$curstername,$ordertime,$orderdate,$chargetype){
-	$sql="INSERT INTO 'rechargeinfo' ('id' ,'ipadcoed' ,'usrid' ,'gameid' ,'custername' ,'chargetime' ,'chargeday' ,'chargecontent') VALUES (NULL , ".$ipadcode.", ".$orderusr.", ".$gamename.", '".$curstername."',  '".$ordertime."', '".$orderdate."', ".$chargetype.")";
+	$sql="INSERT INTO rechargeinfo VALUES (NULL , ".$ipadcode.", ".$orderusr.", ".$gamename.", '".$curstername."',  '".$ordertime."', '".$orderdate."', ".$chargetype.")";
 	$result=mysql_query($sql);
-	echo $sql;
+	echo $result;
  }
  /**************************************************************
  *
