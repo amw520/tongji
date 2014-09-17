@@ -1,46 +1,5 @@
-<?php include 'conn.php';?>
+<?php require('includes/conn.php');?>
 <?php
- 
-function arrayrecursive(&$array, $function, $apply_to_keys_also = false)
-{
-    static $recursive_counter = 0;
-    if (++$recursive_counter > 1000) {
-        die('possible deep recursion attack');
-    }
-    foreach ($array as $key => $value) {
-        if (is_array($value)) {
-            arrayrecursive($array[$key], $function, $apply_to_keys_also);
-        } else {
-            $array[$key] = $function($value);
-        }
-
-        if ($apply_to_keys_also && is_string($key)) {
-            $new_key = $function($key);
-            if ($new_key != $key) {
-                $array[$new_key] = $array[$key];
-                unset($array[$key]);
-            }
-        }
-    }
-    $recursive_counter--;
-}
-
-/**************************************************************
- *
- * 将数组转换为json字符串（兼容中文）
- * @param array $array  要转换的数组
- * @return string  转换得到的json字符串
- * @access public
- *
- *************************************************************/
- 
- function json($array) {
- arrayrecursive($array, 'urlencode', true);
- $json = json_encode($array);
- return urldecode($json);
-}
-
-
 /**************************************************************
  *
  * 返回查询结果
@@ -56,8 +15,7 @@ function arrayrecursive(&$array, $function, $apply_to_keys_also = false)
   $orderdate=$_GET["orderdate"];
   $gamename=$_GET["gamename"];
   $act=$_GET["act"];
-
-$sql="INSERT INTO `rechargeinfo` (`id` ,`ipadcoed` ,`usrid` ,`gameid` ,`custername` ,`chargetime` ,`chargeday` ,`chargecontent`) VALUES (NULL , '01', ".$orderusr.", ".$gamename.", ".$curstername.",  '".$ordertime."', '".$orderdate."', ".$chargetype.")";
+	$sql="INSERT INTO `rechargeinfo` (`id` ,`ipadcoed` ,`usrid` ,`gameid` ,`custername` ,`chargetime` ,`chargeday` ,`chargecontent`) VALUES (NULL , '01', ".$orderusr.", ".$gamename.", ".$curstername.",  '".$ordertime."', '".$orderdate."', ".$chargetype.")";
 $sqlq="SELECT count(*),sum(chargecontent) FROM `rechargeinfo` WHERE 1";
 if($act="query"){
 	if($curstername!="undefined"){
@@ -76,16 +34,21 @@ if($act="query"){
 	$sql=$sqlq;
 }
 $result=mysql_query($sql);
- 
+$resstr=mysql_fetch_array($result);
 
-echo $result;
+echo json_encode($resstr);
 /**************************************************************
  *
- * 返回查询结果,
+ * 添加充值项
  * @param 
  * @return string  
  * @access public
  *
  *************************************************************/
+ function addChargeItem($orderusr,$gamename){
+	$sql="INSERT INTO `rechargeinfo` (`id` ,`ipadcoed` ,`usrid` ,`gameid` ,`custername` ,`chargetime` ,`chargeday` ,`chargecontent`) VALUES (NULL , '01', ".$orderusr.", ".$gamename.", ".$curstername.",  '".$ordertime."', '".$orderdate."', ".$chargetype.")";
+	$result=mysql_query($sql);
+	echo $result;
+ }
  
 ?>
