@@ -87,7 +87,7 @@ li.female a.active{  background-position:left -392px}
 .dc-tip{color:#4c9cf4;font-size:12px;text-shadow:1px 1px 1px #223e72}
 .dc-tip-white{color:#fff;font-size:12px;}
 .arial{font-family:Arial}
-.logo,li.browser a,li.os a,li.resolution a,li.area a,li.browser a:hover,li.os a:hover,li.os a:hover,li.resolution a.active,li.area a:hover,#bd #nav li.about-data a.active,#nav .about-data a,#nav .about-data a:hover,.attention a{ background-image: url("../images/dc-sprite-24.png");background-repeat:no-repeat}
+li.browser a,li.os a,li.resolution a,li.area a,li.browser a:hover,li.os a:hover,li.os a:hover,li.resolution a.active,li.area a:hover,#bd #nav li.about-data a.active,#nav .about-data a,#nav .about-data a:hover,.attention a{ background-image: url("../images/dc-sprite-24.png");background-repeat:no-repeat}
 #BDBridgeWrap,.lxb-container{display:none}
 @font-face{font-family:Gidute;src:url(/css/data_center/decorator/app/gidute.eot?#iefix) format('eot'),url(/css/data_center/decorator/app/gidute.ttf) format('truetype');font-weight:400}
 .chart-report{position:relative;color:#4b5473}

@@ -35,7 +35,7 @@
 
 
 		<li class="about-data">
-				<span>关于数据</span>
+				<span></span>
 		</li>
 
 	</ul>

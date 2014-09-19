@@ -5,7 +5,7 @@
 
 	<div id="content" style="margin-left: 0px;">
 		<div class="report-title">
-			<span>订单</span>
+			<h2 class="part-maintt">订单</h2>
 
 
 			<div class="part-box clearfix">
