@@ -11,8 +11,11 @@
 			</div>
 
 		</div>
-		
+		<script src="js/require.js"></script>
+		<script src="js/config.js"></script>
 		<script src="js/jquery-1.8.3.js"></script>
 		<script src="js/init.js"></script>
+		
+		<script src="js/login.js"></script>
 	</body>
 </html>

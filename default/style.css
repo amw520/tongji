@@ -76,3 +76,74 @@ margin: 0 auto;
 .part-maintt {
 	margin-bottom: 15px;
 }
+/**************************************************************
+ *
+ * 登录弹出层
+ * @param 
+ * @return string  
+ * @access public
+ *
+ *************************************************************/
+.mod-login {
+position: fixed;
+left: 50%;
+top: 100px;
+width: 538px;
+margin-left: -280px;
+height: 656px;
+background: url(../images/bg_login.jpg) no-repeat;
+}
+.part-act-login-close {
+position: absolute;
+top: -58px;
+right: -54px;
+width: 120px;
+height: 120px;
+cursor: pointer;
+background: url(../images/btn_login_close.png) no-repeat;
+}
+.part-act-login-close:active {
+background: url(../images/btn_login_close_hover.png) no-repeat;
+}
+.part-act-login {
+position: absolute;
+top: 478px;
+left: 50%;
+width: 438px;
+margin-left: -220px;
+height: 96px;
+cursor: pointer;
+background: url(../images/btn_login.png) no-repeat;
+}
+.part-act-login:active {
+background: url(../images/btn_login_hover.png) no-repeat;
+}
+.txt-login-usr,.txt-login-pwd {
+position: absolute;
+top: 190px;
+left: 50px;
+background: none;
+border: none;
+outline: none;
+width: 366px;
+height: 44px;
+padding: 20px 0px 20px 60px;
+font-size: 30px;
+}
+.txt-login-pwd {
+top: 316px;
+}
+/**************************************************************
+ *
+ * 登录
+ * @param 
+ * @return string  
+ * @access public
+ *
+ *************************************************************/
+ .mod-login-sm {
+ position: fixed;
+ top: 15px;
+ right: 20%;
+ cursor: pointer;
+ }

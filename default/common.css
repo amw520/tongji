@@ -1,31 +1,19 @@
-.dn {
-display: none;
-}
-#BaiduShare{background-position:0 -1381px;height:88px;left:148px;padding-left:7px;position:absolute;top:-101px;width:379px}
-.arrow{background-position:0 -929px;height:12px;left:45px;overflow:hidden;position:absolute;top:87px;width:20px}
-.close{display:none}
-.close-btn{background-position:0 -881px;cursor:pointer;height:28px;overflow:hidden;position:absolute;right:-12px;top:-12px;width:28px}
-#bdshare-wrapper{background-position:0 0;display:inline-block;height:100%;width:100%}
-#bdshare{margin:25px auto 25px}
-.bds_label{float:left;margin:25px auto 25px 15px}
-#bdshare-wrapper .bds_label{color:#fff;float:left;font-size:15px;padding-top:13px}
-#BaiduShare,.arrow,.close-btn,#bdshare-wrapper{ background-repeat:no-repeat}
+
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;margin:0;padding:0}
 body{
-background:url("../images/bg.jpg") repeat-x scroll 0 0 #153773;
+/* background:url("../images/bg.jpg") repeat-x scroll 0 0 #153773; */
 font-family:'\5b8b\4f53',Arial,sans-serif;font-size:75%;line-height:1.33em}
 ol,ul{list-style:none}
-.clearfix:after{clear:both;content:".";display:block;height:0;visibility:hidden}
+.clearfix:after{clear:both;content:" ";display:block;height:0;visibility:hidden}
 .clearfix{display:block;zoom:1}
 img{vertical-align:middle}
 a{color:#0965b8;cursor:pointer;text-decoration:none}
 a:hover{text-decoration:underline}
 .clear{clear:both;font-size:0;height:0}
-#wrapper{margin:0 auto;min-width:902px;width:75.167em}
-.ro{display:block;margin:8px 0 15px}
-#FlashTimeLineContainer{height:75px;margin-bottom:4px}
-div.download-share{margin-bottom:19px}
+#wrapper{margin:0 auto;min-width:902px;width:75.167em;min-height: 500px;}
+
 .hidden{display:none!important}
+.dn {display: none;}
 .logo .separator{margin:0 .222em}
 .top-nav{color:#fff;text-align:right;margin-top:.417em;line-height:15px}
 .top-nav a{color:#fff}

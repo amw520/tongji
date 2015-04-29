@@ -196,7 +196,7 @@ function addData(){
 }
 //查询总数
 function queryData (){
-		var curstername,chargetype,gamename,orderusr,ordertime,orderdate,str;
+	var curstername,chargetype,gamename,orderusr,ordertime,orderdate,strData;
 	var url="provider.php?action=querytotal&";
 	if($("#curstername").val()!=""){
 		curstername=$("#curstername").val();
@@ -225,11 +225,11 @@ function queryData (){
 	}else{
 	}
 	
-	str="curstername=".concat(curstername).concat("&chargetype=").concat(chargetype)
+	strData="curstername=".concat(curstername).concat("&chargetype=").concat(chargetype)
 		.concat("&orderusr=").concat(orderusr).concat("&ordertime=").concat(ordertime)
 		.concat("&orderdate=").concat(orderdate).concat("&gamename=").concat(gamename);
-		url=url+str;
-		$.get(url,function(data){
+		url=url;
+		$.post(url,strData,function(data){
 			alert(data);
 		});
 
